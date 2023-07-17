@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { useState } from 'react';
 import Form from './components/Form';
 import CardList from './components/CardList';
+import Navbar from './components/Navbar';
 
 const App = () => {
   const [todos, setToDos] = useState([]);
@@ -33,9 +34,14 @@ const App = () => {
     setToDos(copied);
   };
 
+  const handleResetTasks = () => {
+    setToDos([]);
+  };
+
   return (
     <div>
-      <Form onCreateTask={handleCreate} />
+      <Navbar />
+      <Form onCreateTask={handleCreate} onResetTask={handleResetTasks} />
       <CardList todos={todos} onToggle={handleToggle} onDelete={handleDelete} />
     </div>
   );

@@ -1,19 +1,22 @@
 import { useState } from 'react';
 
 const Form = ({ onCreateTask }) => {
-  const [text, setText] = useState([]);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newTodo = {
-      title: text,
+      title,
+      description,
       id: Date.now(),
       completed: false,
     };
 
     onCreateTask(newTodo);
-    setText('');
+    setTitle('');
+    setDescription('');
   };
 
   return (
@@ -22,22 +25,31 @@ const Form = ({ onCreateTask }) => {
         className="p-5 row row-cols-lg-auto g-3 align-items-center justify-content-center bg-info"
         onSubmit={handleSubmit}
       >
-        <div className="col-12">
-          <label className="visually-hidden">Task:</label>
+        <div class="row">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Task Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Task Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Task"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </div>
-
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Add
-          </button>
+          <div className="col">
+            <button type="submit" className="btn btn-primary">
+              Add Task
+            </button>
+          </div>
         </div>
       </form>
     </div>

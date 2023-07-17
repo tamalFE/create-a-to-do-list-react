@@ -3,7 +3,7 @@ const Card = (props) => {
   //     todo: { id, title, completed },
   //   } = props;
   const { todo } = props;
-  const { id, title, completed } = todo;
+  const { id, title, description, completed } = todo;
 
   return (
     <div className="col-sm-4">
@@ -11,10 +11,7 @@ const Card = (props) => {
         <div className="card-header">Task ID: {id}</div>
         <div className="card-body">
           <h5 className="card-title text-capitalize">{title}</h5>
-          {/* <p className="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p> */}
+          <p className="card-text">{description}</p>
           <div className="d-flex align-items-center justify-content-between">
             <div className="form-check form-check-reverse">
               <input className="form-check-input" type="checkbox" />

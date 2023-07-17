@@ -2,7 +2,7 @@ const Card = (props) => {
   //   const {
   //     todo: { id, title, completed },
   //   } = props;
-  const { todo, onToggle } = props;
+  const { todo, onToggle, onDelete } = props;
   const { id, title, description, completed } = todo;
 
   console.log(props);
@@ -36,7 +36,11 @@ const Card = (props) => {
               />
               <label>Complete: </label>
             </div>
-            <button type="button" className="btn btn-danger">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => onDelete(id)}
+            >
               Delete
             </button>
           </div>
